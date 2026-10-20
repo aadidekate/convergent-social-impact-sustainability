@@ -1,4 +1,4 @@
-# ShelfLife
+﻿# ShelfLife
 
 iOS app that scans grocery receipts, tracks when food expires, suggests recipes for what's about to go bad, manages grocery lists, analyzes monthly spending and food waste, and lets circles of people share items.
 
@@ -6,7 +6,7 @@ Current state: front end with mock data. Backend seams are marked `// TODO(backe
 
 ## Setup (macOS)
 
-Requires Xcode 15+ (iOS 17 SDK).
+Requires Xcode 16+ (iOS 17+ deployment target).
 
 ```sh
 brew install xcodegen
