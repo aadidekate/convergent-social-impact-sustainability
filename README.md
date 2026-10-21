@@ -8,6 +8,8 @@ Current state: front end with mock data. Backend seams are marked `// TODO(backe
 
 Requires Xcode 16+ (iOS 17+ deployment target).
 
+(Swift and Supabase - APIs TBD)
+
 ```sh
 brew install xcodegen
 xcodegen
