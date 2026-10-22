@@ -1,4 +1,4 @@
-﻿# ShelfLife
+﻿# ShelfLife :)
 
 iOS app that scans grocery receipts, tracks when food expires, suggests recipes for what's about to go bad, manages grocery lists, analyzes monthly spending and food waste, and lets circles of people share items.
 
