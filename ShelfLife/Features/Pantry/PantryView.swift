@@ -2,6 +2,7 @@ import SwiftUI
 
 struct PantryView: View {
     @Environment(PantryStore.self) private var pantry
+    @Environment(AppRouter.self) private var appRouter
 
     @State private var query = ""
     @State private var selectedFilter: Filter = .all
@@ -19,7 +20,10 @@ struct PantryView: View {
     }
 
     var body: some View {
-        NavigationStack {
+        // Bind the environment router so we can pass $router.shouldOpenQuickCheckIn
+        @Bindable var router = appRouter
+
+        return NavigationStack {
             Group {
                 if pantry.items.isEmpty {
                     ContentUnavailableView("Pantry Is Empty", systemImage: "refrigerator", description: Text("Add an item or scan a receipt."))
@@ -59,6 +63,10 @@ struct PantryView: View {
             }
             .sheet(isPresented: $showingNewItem) {
                 PantryItemEditor()
+            }
+            // 🚀 Open the standalone Quick Check-In popup wizard when notification is tapped
+            .sheet(isPresented: $router.shouldOpenQuickCheckIn) {
+                QuickCheckInView(items: pantry.expiringSoon.isEmpty ? pantry.items : pantry.expiringSoon)
             }
         }
     }
@@ -162,4 +170,5 @@ struct PantryView: View {
 #Preview {
     PantryView()
         .environment(PantryStore(items: MockData.pantryItems, services: .mock))
+        .environment(AppRouter())
 }
